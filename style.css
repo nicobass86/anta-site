@@ -1,0 +1,77 @@
+/* Anta — the site dressed as the game: warm paper, dark ink, pixel borders, the red of the
+   titles and the yellow of the highlights. Press Start 2P is the game's own pixel font
+   (SIL OFL, see fonts/OFL.txt); the logo and the icon are the game's pixel art. */
+@font-face{font-family:"Press Start 2P";src:url(fonts/PressStart2P.woff2) format("woff2");font-weight:400;font-display:swap}
+
+:root{
+  --paper:#e9dcc2; --grid:#d3c29f; --ink:#1b1a2b; --ink-soft:#3f3646; --surface:#fffaf0; --surface-2:#f3e9d4;
+  --line:#d6c6a4; --accent:#c0453a; --accent-ink:#fffaf0; --hl:#ffcd75; --title:#b5332a; --navy:#2b3a55;
+  --border:#1b1a2b; --drop:#b29d74; --muted:#5d5262; --link:#9e2f25;
+  --gutter:16px;
+  --pixel:"Press Start 2P",ui-monospace,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#141322; --grid:#201e33; --ink:#f4ead6; --ink-soft:#d8ccb6; --surface:#1f1d31; --surface-2:#26243b;
+    --line:#3a3652; --title:#ff7a6b; --border:#05040c; --drop:#05040c; --muted:#b3a8bd; --link:#ffcd75;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--sans);overflow-x:hidden;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:32px 32px;background-position:-1px -1px}
+img{max-width:100%;height:auto;display:block}
+.px{image-rendering:pixelated}
+a{color:var(--link)}
+h1,h2,h3{font-family:var(--pixel);font-weight:400;line-height:1.35;margin:0;color:var(--title)}
+.wrap{max-width:46rem;margin:0 auto;padding:0 var(--gutter)}
+
+/* Top bar */
+.page-top{background:var(--navy);border-bottom:4px solid var(--border)}
+.page-top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fffaf0;text-decoration:none;font:400 15px var(--pixel)}
+.brand img{width:32px;height:32px;outline:2px solid var(--border)}
+.page-top nav{display:flex;gap:16px;font-size:15px}
+.page-top nav a{color:#e9dcc2;text-decoration:none}
+.page-top nav a:hover,.page-top nav a[aria-current]{color:var(--hl)}
+
+/* Hero: the logo on the game's ink, the icon beside it */
+.hero{padding:40px 0 8px;text-align:center}
+.hero .logo{width:min(100%,425px);margin:0 auto}
+.tagline{font:400 clamp(12px,3.4vw,16px)/1.6 var(--pixel);color:var(--ink);margin:22px 0 10px}
+.hook{max-width:34rem;margin:0 auto;color:var(--ink-soft)}
+
+/* Panels: the game's pixel cards, a hard border and a hard drop */
+.panel{background:var(--surface);border:3px solid var(--border);box-shadow:6px 6px 0 var(--drop);padding:22px 18px;margin:28px 0}
+.panel h1{font-size:clamp(16px,4.6vw,22px);margin:0 0 14px}
+.panel h2{font-size:clamp(13px,3.8vw,16px);margin:28px 0 8px;padding-top:18px;border-top:3px dotted var(--line)}
+.panel h2:first-child{margin-top:0;padding-top:0;border-top:0}
+.panel p,.panel li{margin:0 0 12px}
+.panel ul{padding-left:1.2em;margin:0 0 12px}
+.panel small{color:var(--muted)}
+.facts{list-style:none;padding:0!important;display:grid;gap:8px}
+.facts li{margin:0!important;padding:8px 12px;background:var(--surface-2);border:2px solid var(--line)}
+.facts b{color:var(--ink)}
+
+.mail{display:inline-block;font:400 13px/1.5 var(--pixel);color:var(--hl-ink,#1b1a2b);background:var(--hl);padding:12px 14px;
+  border:3px solid var(--border);box-shadow:4px 4px 0 var(--drop);text-decoration:none;overflow-wrap:anywhere}
+.mail:hover{background:#ffe09e}
+.mail:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--drop)}
+.mail:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* Footer */
+footer{border-top:4px solid var(--border);background:var(--navy);color:#cfc4b0;font-size:14px;padding:22px 0 34px;margin-top:40px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:space-between}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:#e9dcc2;text-decoration:none}
+footer a:hover{color:var(--hl)}
+
+@media (min-width:720px){
+  :root{--gutter:28px}
+  .hero{padding-top:56px}
+  .panel{padding:32px 34px}
+}
