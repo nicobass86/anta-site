@@ -75,3 +75,56 @@ footer a:hover{color:var(--hl)}
   .hero{padding-top:56px}
   .panel{padding:32px 34px}
 }
+
+/* Home only. Language: Italian by default; the switch or a browser in another language shows English. */
+html:not(.en) .i18n [lang=en]{display:none}
+html.en .i18n [lang=it]{display:none}
+.page-top nav{align-items:center}
+.lang{display:inline-flex;border:2px solid var(--border)}
+.lang button{all:unset;cursor:pointer;padding:9px 10px;font:400 10px var(--pixel);color:#e9dcc2}
+.lang button[aria-pressed=true]{background:var(--hl);color:#1b1a2b}
+.lang button:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+.i18n .wrap{max-width:60rem}
+.hero-grid{display:grid;gap:30px;justify-items:center}
+.chips{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px 0 0;padding:0}
+.chips li{padding:6px 10px;background:var(--surface);border:2px solid var(--border);font-size:14px;font-weight:600}
+.soon{display:inline-block;margin:20px 0 0;padding:12px 14px;background:var(--accent);color:var(--accent-ink);border:3px solid var(--border);
+  box-shadow:4px 4px 0 var(--drop);font:400 11px/1.5 var(--pixel)}
+.phone{width:min(72vw,290px);padding:8px;background:#1b1a2b;border:3px solid var(--border);box-shadow:6px 6px 0 var(--drop)}
+.phone video{display:block;width:100%;height:auto;aspect-ratio:590/1280;background:#1b1a2b}
+figure{margin:0}
+.feature{display:grid;gap:20px;align-items:center}
+.feature figure{width:min(62vw,230px);justify-self:center}
+.feature img,.strip img{border:3px solid var(--border);box-shadow:4px 4px 0 var(--drop)}
+.panel h3{font-size:13px;margin:0 0 10px;color:var(--ink)}
+.panel h2 + p,.panel h2 + .two,.panel h2 + details{margin-top:14px}
+.strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding:6px 6px 14px;-webkit-overflow-scrolling:touch}
+.strip figure{flex:0 0 min(44vw,148px);scroll-snap-align:start}
+.strip figcaption{margin-top:12px;text-align:center;font-size:14px;color:var(--muted)}
+.strip:focus-visible{outline:3px solid var(--accent)}
+.two{display:grid;gap:14px}
+.box{padding:16px;background:var(--surface-2);border:2px solid var(--line)}
+.box p{margin:0}
+.box.gold{background:var(--hl);border:3px solid var(--border);color:#1b1a2b}
+.box.gold h3{color:#1b1a2b}
+details{border:2px solid var(--line);background:var(--surface-2);margin:0 0 8px}
+summary{cursor:pointer;padding:12px 14px;font-weight:700}
+summary:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.panel details p{margin:0;padding:0 14px 14px}
+@media (min-width:720px){
+  .hero-grid{grid-template-columns:1fr auto;text-align:left;gap:48px;align-items:center}
+  .hero-grid .logo{margin:0}
+  .hero-grid .hook{margin:0}
+  .chips{justify-content:flex-start}
+  .feature{grid-template-columns:1fr 230px;gap:40px}
+  .feature.flip{grid-template-columns:230px 1fr}
+  .feature.flip figure{order:-1}
+  .two{grid-template-columns:1fr 1fr}
+}
+@media (max-width:400px){
+  .brand{font-size:11px;gap:7px}
+  .page-top nav{gap:10px;font-size:14px}
+  .lang button{padding:9px 6px}
+}
+section h2[id]{scroll-margin-top:28px}
+@media (max-width:350px){.i18n .brand span{display:none!important}}

@@ -4,50 +4,167 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Anta – Il simulatore di mezza età</title>
-<meta name="description" content="Anta: hai superato i quaranta e il 28 novembre c'è la cena dei 25 anni dalla maturità. Un mese per arrivarci in forma. Gioco gratis per iPhone e Android, senza pubblicità né account.">
+<meta name="description" content="Anta: lavoro, figli, padel, la lavatrice e la rimpatriata della 5ªB. Una vita in pixel art, una giornata alla volta, con minigiochi e clan. Gratis, senza pubblicità né account.">
 <meta name="theme-color" content="#2b3a55">
 <link rel="canonical" href="https://nicobass86.github.io/anta-site/">
 <meta property="og:title" content="Anta – Il simulatore di mezza età">
-<meta property="og:description" content="Mutuo, figli, padel e la cena dei 25 anni dalla maturità: arrivaci in forma.">
+<meta property="og:description" content="Vivi la fase della vita in cui tutto preme. Scelte, minigiochi e clan, in pixel art.">
+<meta property="og:image" content="https://nicobass86.github.io/anta-site/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://nicobass86.github.io/anta-site/">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/PressStart2P.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script>
+// Italian is the game's language: a browser in another language, #en or the switch shows the English.
+function applyLang(l) {
+  var d = document.documentElement, en = l === "en";
+  d.classList.toggle("en", en);
+  d.lang = l;
+  document.title = en ? "Fortyish – The midlife sim, in pixel art" : "Anta – Il simulatore di mezza età";
+  Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function (b) {
+    b.setAttribute("aria-pressed", String(b.getAttribute("data-l") === l));
+  });
+  var v = document.getElementById("promo");
+  if (v && v.getAttribute("data-l") !== l) {
+    var resume = !!v.getAttribute("data-l") && !v.paused;
+    v.setAttribute("data-l", l);
+    v.setAttribute("aria-label", en ? "Promo video of the game, 26 seconds, with music" : "Video promo del gioco, 26 secondi, con musica");
+    v.poster = "img/promo_" + l + ".webp";
+    v.src = "img/promo_" + l + ".mp4";
+    if (resume) { var p = v.play(); if (p) p.catch(function () {}); }
+  }
+}
+function setLang(l) {
+  applyLang(l);
+  try { localStorage.setItem("lang", l); } catch (e) {}
+}
+var firstLang = (function () {
+  if (location.hash === "#en" || location.hash === "#it") return location.hash.slice(1);
+  try { var s = localStorage.getItem("lang"); if (s === "en" || s === "it") return s; } catch (e) {}
+  return /^it\b/i.test(navigator.language || "it") ? "it" : "en";
+})();
+applyLang(firstLang);
+</script>
 </head>
-<body>
-<header class="page-top"><div class="wrap"><a class="brand" href="index.html"><img class="px" src="img/icona.svg" alt="" width="32" height="32">Anta</a>
-<nav aria-label="Pagine"><a href="#supporto">Supporto</a><a href="privacy.html">Privacy</a></nav></div></header>
+<body class="i18n">
+<header class="page-top"><div class="wrap"><a class="brand" href="index.html"><img class="px" src="img/icona.svg" alt="" width="32" height="32"><span lang="it">Anta</span><span lang="en">Fortyish</span></a>
+<nav aria-label="Pagine / Pages"><a href="#supporto"><span lang="it">Supporto</span><span lang="en">Support</span></a><a href="privacy.html">Privacy</a>
+<span class="lang" role="group" aria-label="Lingua / Language"><button type="button" data-l="it" onclick="setLang('it')">IT</button><button type="button" data-l="en" onclick="setLang('en')">EN</button></span></nav></div></header>
 
 <main class="wrap">
-<section class="hero" aria-labelledby="titolo">
-  <h1 id="titolo"><img class="logo px" src="img/logo.svg" alt="Anta" width="425" height="120"></h1>
-  <p class="tagline">Il simulatore di mezza età</p>
-  <p class="hook">Hai superato i quaranta. Mutuo, figli, padel il giovedì e il gruppo della classe che si è appena risvegliato: il 28 novembre c'è la cena dei 25 anni dalla maturità. Hai un mese per arrivarci in forma.</p>
+<section class="hero hero-grid" aria-labelledby="titolo">
+  <div class="hero-copy">
+    <h1 id="titolo"><img class="logo px" src="img/logo.svg" alt="Anta" width="425" height="120"></h1>
+    <p class="tagline"><span lang="it">Il simulatore di mezza età</span><span lang="en">The midlife sim, in pixel art</span></p>
+    <p class="hook"><span lang="it">Mutuo, figli, padel, calcetto. La lavatrice da stendere e il gruppo della 5ªB che si è appena risvegliato. Vivi la fase della vita in cui tutto preme, e prova a non crollare.</span><span lang="en">A mortgage, kids, padel, five-a-side. Laundry to hang out and a class group chat that just woke up. Live the stage of life when it all piles up, and try to keep it together.</span></p>
+    <ul class="chips" role="list">
+      <li><span lang="it">Gratis</span><span lang="en">Free</span></li>
+      <li><span lang="it">Senza pubblicità</span><span lang="en">No ads</span></li>
+      <li><span lang="it">Senza account</span><span lang="en">No account</span></li>
+      <li lang="en">Game text in Italian</li>
+    </ul>
+    <p class="soon"><span lang="it">In arrivo su iPhone e Android</span><span lang="en">Coming to iPhone and Android</span></p>
+  </div>
+  <div class="phone">
+    <video id="promo" width="590" height="1280" controls playsinline preload="none"></video>
+  </div>
+</section>
+<script>applyLang(firstLang);</script>
+<noscript><p class="wrap"><a href="img/promo_it.mp4">Video promo</a></p></noscript>
+
+<section class="panel feature" aria-labelledby="giornata">
+  <div>
+    <h2 id="giornata"><span lang="it">Una giornata alla volta</span><span lang="en">One day at a time</span></h2>
+    <p><span lang="it">Il gioco è il telefono del tuo personaggio: le app sono i luoghi, la batteria è l'energia, le notifiche sono gli eventi.</span><span lang="en">The game is your character's phone: apps are places, the battery is your energy, notifications are events.</span></p>
+    <p><span lang="it">Ogni giorno va dalle 7 a mezzanotte e ogni cosa dura quello che dura: una corsetta 45 minuti, il lavoro fino a sera. Il tempo scorre sul calendario, con le feste al loro giorno, i bambini che crescono e gli anni che passano.</span><span lang="en">Each day runs from 7 am to midnight and everything takes the time it takes: 45 minutes for a jog, work until evening. Time follows the calendar, with holidays on their dates, kids growing up and years going by.</span></p>
+  </div>
+  <figure><img src="img/home.webp" alt="La casa, le cose da fare adesso e le app della giornata" width="460" height="999" loading="lazy"></figure>
 </section>
 
-<section class="panel" aria-labelledby="gioco">
-  <h2 id="gioco">Il gioco</h2>
-  <ul class="facts">
-    <li><b>28 giorni</b>, tre fasce al giorno: il lavoro la mattina, poi il dopo lavoro, la sera e i weekend.</li>
-    <li><b>Il telefono è il gioco</b>: le app sono i luoghi, la batteria è l'energia, le notifiche sono gli eventi.</li>
-    <li><b>Dieci finali</b> da collezionare e un bilancio da condividere.</li>
-    <li><b>Gratis</b>, senza pubblicità, senza acquisti, senza account. Si gioca anche offline.</li>
-  </ul>
+<section class="panel feature flip" aria-labelledby="scelte">
+  <div>
+    <h2 id="scelte"><span lang="it">Ogni scelta ha le sue conseguenze</span><span lang="en">Every choice has its consequences</span></h2>
+    <p><span lang="it">Giulia russa. Una gomitata gentile, il divano o un video come prova? Scegli per come sei o per come vorresti essere.</span><span lang="en">Giulia snores. A gentle nudge, the sofa, or film it as evidence? Choose as who you are, or who you wish you were.</span></p>
+    <p><span lang="it">Le scelte rischiose mostrano la probabilità di riuscita. Le promesse diventano obiettivi, e quello che trascuri torna a trovarti. Ci si ammala, si litiga, si cambia lavoro.</span><span lang="en">Risky choices show your odds. Promises become goals, and what you neglect comes back to find you. You get sick, you argue, you change jobs.</span></p>
+  </div>
+  <figure><img src="img/scelta.webp" alt="Un evento notturno, Il russare, con tre scelte" width="460" height="999" loading="lazy"></figure>
+</section>
+
+<section class="panel" aria-labelledby="minigiochi">
+  <h2 id="minigiochi"><span lang="it">Ogni impegno è un minigioco</span><span lang="en">Every task is a minigame</span></h2>
+  <p><span lang="it">Il padel del giovedì, la chitarra al falò, la pizza per tutti, la band in cantina. Si gioca con un dito, e da come va dipende quanto ti rende. Se non hai voglia, si salta.</span><span lang="en">Thursday padel, guitar by the bonfire, pizza for everyone, the band in the basement. Played with one finger, and how well it goes decides what you get out of it. Not in the mood? Skip it.</span></p>
+  <div class="strip" tabindex="0" role="group" aria-label="Minigiochi / Minigames">
+    <figure><img src="img/padel.webp" alt="" width="460" height="999" loading="lazy"><figcaption>Padel</figcaption></figure>
+    <figure><img src="img/chitarra.webp" alt="" width="460" height="999" loading="lazy"><figcaption><span lang="it">Chitarra</span><span lang="en">Guitar</span></figcaption></figure>
+    <figure><img src="img/pizza.webp" alt="" width="460" height="999" loading="lazy"><figcaption>Pizza</figcaption></figure>
+    <figure><img src="img/calcetto.webp" alt="" width="460" height="999" loading="lazy"><figcaption><span lang="it">Calcetto</span><span lang="en">Five-a-side</span></figcaption></figure>
+    <figure><img src="img/band.webp" alt="" width="460" height="999" loading="lazy"><figcaption><span lang="it">La band</span><span lang="en">The band</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="panel feature" aria-labelledby="clan">
+  <div>
+    <h2 id="clan"><span lang="it">Entra in un clan</span><span lang="en">Join a clan</span></h2>
+    <p><span lang="it">L'ufficio, il calcetto, i vecchi compagni: ognuno gioca la sua partita e la settimana si confronta. Il lunedì alle 6 arrivano i premi: il Polpaccio d'Oro, il Salvadanaio, il Calzino Spaiato.</span><span lang="en">The office, five-a-side, old classmates: everyone plays their own game and you compare the week. Prizes come on Monday at 6 am: the Golden Calf, the Piggy Bank, the Odd Sock.</span></p>
+    <p><span lang="it">Si sfidano gli amici e si lanciano frecciatine già scritte. Si invita con un link o un QR. Non c'è chat, e chi non entra in un clan gioca come prima.</span><span lang="en">Challenge friends and send ready-made jabs. Invite people with a link or a QR code. There is no chat, and clans are optional.</span></p>
+  </div>
+  <figure><img src="img/premi.webp" alt="I premi della settimana di un clan" width="460" height="999" loading="lazy"></figure>
+</section>
+
+<section class="panel feature flip" aria-labelledby="chi">
+  <div>
+    <h2 id="chi"><span lang="it">Chi sei</span><span lang="en">Who you are</span></h2>
+    <p><span lang="it">Età, famiglia, città, lavoro e passioni li decidi tu. Il ritratto in pixel art fa la faccia di come stai, e i vestiti che compri si vedono addosso.</span><span lang="en">You decide age, family, city, job and passions. Your pixel-art portrait shows how you are doing, and the clothes you buy show up on you.</span></p>
+    <ul class="facts">
+      <li><b>14</b> <span lang="it">tipi, dall'ingegnere allo sciatto</span><span lang="en">types, from the engineer to the scruffy one</span></li>
+      <li><b>30</b> <span lang="it">passioni</span><span lang="en">passions</span></li>
+      <li><b>15</b> <span lang="it">lavori</span><span lang="en">jobs</span></li>
+    </ul>
+  </div>
+  <figure><img src="img/tipo.webp" alt="La creazione del personaggio: la scelta del tipo" width="460" height="999" loading="lazy"></figure>
+</section>
+
+<section class="panel" aria-labelledby="gratis">
+  <h2 id="gratis"><span lang="it">Gratis, e Gold per chi vuole</span><span lang="en">Free, and Gold if you like</span></h2>
+  <div class="two">
+    <div class="box"><h3><span lang="it">Gratis, sempre</span><span lang="en">Free, forever</span></h3>
+      <p><span lang="it">Una giornata di gioco al giorno, gli anni che passano, i clan e le scelte più comuni del personaggio. Nessuna pubblicità.</span><span lang="en">One game day per real day, the passing years, clans and the most common character choices. No ads.</span></p></div>
+    <div class="box gold"><h3><span lang="it">Anta Gold</span><span lang="en">Fortyish Gold</span></h3>
+      <p><span lang="it">Si compra una volta. Apre le scelte con il lucchetto, la maratona (più giornate di fila), gli obiettivi lunghi e i grandi acquisti a rate. Nessun abbonamento.</span><span lang="en">A one-time purchase. It opens the locked choices, marathon mode (more days in a row), the long goals and the big installment purchases. No subscription.</span></p></div>
+  </div>
 </section>
 
 <section class="panel" aria-labelledby="supporto">
-  <h2 id="supporto">Supporto</h2>
-  <p>Domande, problemi o suggerimenti? Scrivici. Indica il modello del telefono, la versione del sistema e, se puoi, cosa stavi facendo quando è comparso il problema.</p>
+  <h2 id="supporto"><span lang="it">Supporto</span><span lang="en">Support</span></h2>
+  <p><span lang="it">Domande, problemi o suggerimenti? Scrivici. Indica il modello del telefono, la versione del sistema e, se puoi, cosa stavi facendo quando è comparso il problema.</span><span lang="en">Questions, problems or suggestions? Write to us. Include your phone model, system version and, if you can, what you were doing when the problem appeared.</span></p>
   <p><a class="mail" href="mailto:aresta.nicola@gmail.com?subject=Anta">aresta.nicola@gmail.com</a></p>
-  <h2>Domande frequenti</h2>
-  <p><b>Dov'è la mia partita?</b> Solo sul telefono: Anta non ha server né account. Se disinstalli l'app o cancelli i suoi dati, la partita si perde e non si può recuperare.</p>
-  <p><b>Posso continuare su un altro telefono?</b> No: il salvataggio non lascia il dispositivo.</p>
-  <p><b>Come condivido il bilancio?</b> A fine mese tocca <em>Condividi il finale</em>: si apre il foglio di condivisione del telefono e scegli tu dove mandarlo.</p>
+  <h2><span lang="it">Domande frequenti</span><span lang="en">Frequently asked questions</span></h2>
+  <details><summary><span lang="it">Quanto dura una partita?</span><span lang="en">How long does a game last?</span></summary>
+    <p><span lang="it">Quanto vuoi: il tempo scorre senza fine e il bilancio lo fai tu dal Profilo. Ci si ferma prima solo con un tracollo, cioè due crolli nello stesso mese.</span><span lang="en">As long as you like: time never stops, and you close the game yourself from the Profile. It ends earlier only with a full collapse: two breakdowns in the same month.</span></p></details>
+  <details><summary><span lang="it">Perché devo aspettare la giornata nuova?</span><span lang="en">Why do I have to wait for the next day?</span></summary>
+    <p><span lang="it">Si parte con tre giornate. Poi ogni mattina alle 6 se ne sblocca una, e quelle non giocate si accumulano fino a tre. Con Gold c'è la maratona: più giornate di fila, senza aspettare.</span><span lang="en">You start with three days. Then one unlocks every morning at 6, and unplayed days pile up to three. Gold adds marathon mode: more days in a row, no waiting.</span></p></details>
+  <details><summary><span lang="it">Dov'è la mia partita?</span><span lang="en">Where is my game saved?</span></summary>
+    <p><span lang="it">Sul telefono. Se disinstalli l'app o ne cancelli i dati, la partita si perde, a meno che il backup del telefono (iCloud o Google) non la contenga.</span><span lang="en">On your phone. If you uninstall the app or clear its data, the game is lost, unless your phone's backup (iCloud or Google) includes it.</span></p></details>
+  <details><summary><span lang="it">Si gioca senza internet?</span><span lang="en">Can I play offline?</span></summary>
+    <p><span lang="it">Sì. La rete serve solo per i clan, gli inviti e gli acquisti.</span><span lang="en">Yes. You only need a connection for clans, invites and purchases.</span></p></details>
+  <details><summary><span lang="it">Ho comprato Gold e non lo vedo: che faccio?</span><span lang="en">I bought Gold but I can't see it. What now?</span></summary>
+    <p><span lang="it">Tocca «Ripristina acquisti» nel Profilo o nel foglio d'acquisto, con lo stesso account dello store. I rimborsi li gestiscono Apple e Google.</span><span lang="en">Tap “Ripristina acquisti” (Restore purchases) in the Profile or in the purchase sheet, signed in to the same store account. Refunds are handled by Apple and Google.</span></p></details>
+  <details><summary><span lang="it">Come entro in un clan?</span><span lang="en">How do I join a clan?</span></summary>
+    <p><span lang="it">Con il link, il QR o il codice di chi è già dentro. Puoi stare in cinque clan. Nell'app Clan puoi segnalare e bloccare.</span><span lang="en">With a link, QR code or invite code from a member. You can be in up to five clans. You can report and block people in the Clan app.</span></p></details>
+  <details><summary><span lang="it">Come cancello i miei dati dei clan?</span><span lang="en">How do I delete my clan data?</span></summary>
+    <p><span lang="it">Nell'app Clan, con «Cancella i miei dati dei clan», oppure scrivendoci. I dettagli sono <a href="privacy.html#cancellare">nell'informativa sulla privacy</a>.</span><span lang="en">In the Clan app, with “Cancella i miei dati dei clan” (Delete my clan data), or by writing to us. Details are in the <a href="privacy.html#delete">privacy policy</a>.</span></p></details>
+  <details><summary><span lang="it">Come condivido il finale?</span><span lang="en">How do I share my ending?</span></summary>
+    <p><span lang="it">Tocca <em>Condividi il finale</em>: il testo viene copiato e lo incolli dove vuoi.</span><span lang="en">Tap <em>Condividi il finale</em> (Share the ending): the text is copied and you paste it wherever you like.</span></p></details>
+  <details><summary><span lang="it">C'è in altre lingue?</span><span lang="en">Is the game in English?</span></summary>
+    <p><span lang="it">Per ora il gioco è solo in italiano.</span><span lang="en">Not yet: for now the game text is in Italian only.</span></p></details>
 </section>
 </main>
 
-<footer><div class="wrap"><nav aria-label="Pagine"><a href="index.html">Anta</a><a href="privacy.html">Privacy</a><a href="#supporto">Supporto</a></nav><span>© 2026 Nicola Aresta</span></div></footer>
+<footer><div class="wrap"><nav aria-label="Pagine / Pages"><a href="index.html"><span lang="it">Anta</span><span lang="en">Fortyish</span></a><a href="privacy.html">Privacy</a><a href="#supporto"><span lang="it">Supporto</span><span lang="en">Support</span></a></nav><span>© 2026 Nicola Aresta</span></div></footer>
 </body>
 </html>
