@@ -32,7 +32,8 @@
 <li><b>I numeri delle giornate di gioco</b>, se sei in un clan: giorno della partita e data in cui l'hai chiuso, statistiche del personaggio (forma, aura, energia, carico, soldi, lavoro, amici, partner, figli), quante volte ha fatto certe cose (padel, lavatrici, straordinari e simili), traguardi, crolli, se era malato, il numero di build dell'app e un identificativo casuale della partita. Sono numeri del gioco, non tuoi.</li>
 <li><b>La vita del clan</b>: nome e stemma, chi entra e chi esce, premi, sfide, frecciatine (frasi già scritte) e reazioni, con data e ora.</li>
 <li><b>Segnalazioni e blocchi</b>: chi hai segnalato, perché e quando; chi hai bloccato.</li>
-<li><b>Piccoli contatori</b> contro gli abusi: codici sbagliati, sfide e frecciatine mandate.</li>
+<li><b>Piccoli contatori</b> contro gli abusi: codici sbagliati, sfide e frecciatine mandate, quante volte un soprannome segnalato è stato tolto.</li>
+<li><b>Le date</b> in cui è nato il tuo profilo e in cui hai aperto Anta l'ultima volta (più o meno: la aggiorniamo una volta a settimana), e <b>i clan da cui sei uscito</b>, per cancellare tutto quando serve.</li>
 </ul>
 <p>Non mandiamo i nomi della famiglia o della città del personaggio, la posizione, la rubrica o le foto. I clan non hanno una chat.</p>
 <p><b>Chi li vede.</b> Gli altri membri dei tuoi clan vedono soprannome, ritratto, numeri e bacheca. Le segnalazioni le legge solo chi gestisce il gioco. Non vendiamo i dati e non li usiamo per pubblicità.</p>
@@ -42,22 +43,27 @@
 <p>L'App Clip lascia il codice sul telefono, in uno spazio condiviso con Anta: l'app lo legge al primo avvio e lo cancella da lì. Non crea un utente. Non si entra in nessun clan senza un tuo tocco.</p>
 <p>Chiunque abbia un link o un codice d'invito può vedere nome, stemma e numero di membri di quel clan, ma non i soprannomi, i ritratti o i numeri. Le chat in cui incolli il link leggono le stesse cose per mostrarne l'anteprima.</p>
 
+<h2>Il controllo che l'app sia quella vera</h2>
+<p>Per difendere i clan da programmi che si fingono Anta, dalla build 39 l'app usa <b>Firebase App Check</b>, di Google. Succede solo se usi i clan: un invito guardato senza scegliere un soprannome non lo fa partire.</p>
+<p>Su iPhone la prova la dà <b>App Attest</b> di Apple; su Android <b>Play Integrity</b> di Google, che guarda se l'app arriva dal Play Store e se il telefono è in regola. Il risultato è un gettone che dura un'ora e accompagna le richieste: il nostro server vede solo se è buono, e nei registri tecnici resta scritto se lo era. Google dichiara di non conservare il materiale della prova; Apple e Google lo trattano secondo le loro informative. Il gettone non dice chi sei, e non lo colleghiamo al soprannome.</p>
+
 <h2>Dove stanno i dati</h2>
-<p>Il server dei clan usa <b>Firebase</b>, un servizio di Google che tratta i dati per nostro conto. Il database e i programmi del server sono in <b>Europa</b>. Il servizio che crea l'utente anonimo (Firebase Authentication) lavora invece negli <b>Stati Uniti</b>: Google dichiara di aderire al Data Privacy Framework tra Unione europea e Stati Uniti.</p>
-<p>Le librerie di Google mandano con le richieste dati tecnici, come versione dell'app e del sistema. Su Android possono creare anche un identificativo dell'installazione e un token per i messaggi, che il nostro server non usa e non conserva. La raccolta facoltativa di dati di Firebase è spenta.</p>
+<p>Il server dei clan usa <b>Firebase</b>, un servizio di Google che tratta i dati per nostro conto. Il database e i programmi del server sono in <b>Europa</b>. Il servizio che crea l'utente anonimo (Firebase Authentication) lavora invece negli <b>Stati Uniti</b>: Google dichiara di aderire al Data Privacy Framework tra Unione europea e Stati Uniti. App Check può usare centri di Google anche fuori dall'Europa.</p>
+<p>Le librerie di Google mandano con le richieste dati tecnici, come versione dell'app e del sistema. La raccolta facoltativa di dati di Firebase è spenta.</p>
 <p>Per far funzionare e proteggere i suoi servizi, Google può tenere l'indirizzo IP nei propri registri: secondo <a href="https://firebase.google.com/support/privacy">la sua informativa</a>, qualche settimana per l'accesso anonimo e qualche mese per le pagine web degli inviti; i registri del server restano di norma trenta giorni. I dati viaggiano sempre cifrati (HTTPS).</p>
 
 <h2>Per quanto tempo</h2>
 <ul>
 <li><b>Un clan</b>, con numeri, bacheca e sfide: si cancella da solo dopo 90 giorni senza attività, oppure subito quando esce l'ultimo membro.</li>
-<li><b>Soprannome, ritratto e ultima giornata</b>: finché non li cancelli.</li>
-<li><b>Segnalazioni e identificativo anonimo</b>: finché non ci chiedi di cancellarli o non servono più a proteggere i clan.</li>
+<li><b>Soprannome, ritratto, ultima giornata e identificativo anonimo</b>: finché non li cancelli, o dopo un anno senza aprire Anta. Allora si esce anche dai clan, come con il tasto.</li>
+<li><b>Segnalazioni</b>: un anno. Quelle su di te si cancellano con i tuoi dati; quelle che hai fatto tu restano anonime (solo il motivo e il giorno).</li>
 </ul>
 
 <h2 id="cancellare">Come si cancellano</h2>
-<p><b>Dall'app:</b> Clan › scheda Clan › «Cancella i miei dati dei clan». Esci da tutti i clan e si cancellano subito soprannome, ritratto, ultima giornata, contatori e blocchi. Il tasto c'è quando sei in almeno un clan: se vuoi cancellare tutto, usalo prima di uscire dall'ultimo.</p>
-<p><b>Che cosa resta:</b> in un clan che continua senza di te, i fatti già successi in bacheca e nelle sfide (con il soprannome di allora) e i numeri delle settimane giocate, fino alla cancellazione del clan. Restano anche l'identificativo anonimo e le eventuali segnalazioni.</p>
-<p><b>Per cancellare anche il resto</b>, o se non hai più l'app o un clan, scrivi a <a href="mailto:aresta.nicola@gmail.com?subject=Anta%20cancella%20i%20miei%20dati">aresta.nicola@gmail.com</a> con il tuo soprannome e il nome di un tuo clan: senza, non possiamo sapere quali dati sono tuoi. Meglio scriverci prima di usare il tasto. Rispondiamo entro un mese.</p>
+<p><b>Dall'app</b> (dalla build 38): Clan › «Tu nei clan» › «Cancella i miei dati dei clan», anche se non sei in nessun clan. Esci da tutti i clan e si cancellano subito soprannome, ritratto, numeri di tutte le settimane, reazioni, contatori, blocchi, segnalazioni ricevute e identificativo anonimo, anche nei clan da cui eri uscito.</p>
+<p><b>Che cosa resta:</b> in un clan che continua senza di te, i fatti già successi in bacheca, nelle sfide e nei premi, con «Ex membro» al posto del tuo nome. Le segnalazioni che hai fatto restano senza il tuo nome, per un anno al massimo. Sui telefoni degli altri il nome può vedersi finché l'app non si aggiorna dal server.</p>
+<p>Chi ha usato il tasto prima del 23 novembre 2026 ha lasciato nei clan soprannome e numeri, fino alla cancellazione del clan: se vuoi toglierli prima, scrivici.</p>
+<p><b>Se non hai più l'app</b>, scrivi a <a href="mailto:aresta.nicola@gmail.com?subject=Anta%20cancella%20i%20miei%20dati">aresta.nicola@gmail.com</a> con il tuo soprannome e il nome di un tuo clan: senza, non possiamo sapere quali dati sono tuoi. Rispondiamo entro un mese.</p>
 <p>Disinstallare Anta cancella quello che sta nell'app, non quello che sta sul server. Su iPhone l'identificativo anonimo può restare nel portachiavi del telefono.</p>
 
 <h2>Acquisti</h2>
