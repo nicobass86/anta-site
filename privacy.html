@@ -22,7 +22,7 @@
 
 <h2>Se non usi clan né inviti</h2>
 <p>Al nostro server non arriva niente. La partita, i finali sbloccati e le impostazioni restano nella memoria dell'app. Il sistema può metterle nel backup del telefono (iCloud o Google), che gestisci tu dalle impostazioni e che noi non vediamo.</p>
-<p>La notifica del mattino la programma il telefono. I testi che condividi (il finale, l'invito a un clan) li passa il telefono all'app che scegli tu, dal suo foglio di condivisione, o li copia negli appunti. L'app parla con lo store per gli acquisti e, su Android, al primo avvio chiede al Play Store se l'installazione viene da un invito: di quella risposta tiene solo il codice.</p>
+<p>La notifica del mattino la programma il telefono; senza clan non nasce nessun gettone per le notifiche. I testi che condividi (il finale, l'invito a un clan) li passa il telefono all'app che scegli tu, dal suo foglio di condivisione, o li copia negli appunti. L'app parla con lo store per gli acquisti e, su Android, al primo avvio chiede al Play Store se l'installazione viene da un invito: di quella risposta tiene solo il codice.</p>
 
 <h2>Se usi i clan</h2>
 <p>I clan sono facoltativi. Quando scegli un soprannome e confermi, nasce un utente anonimo: un identificativo casuale, senza email, telefono o password. Da quel momento conserviamo:</p>
@@ -33,6 +33,7 @@
 <li><b>La vita del clan</b>: nome, stemma, ambientazione e motto (una frase che scrive chi lo fonda), chi entra e chi esce, premi, sfide, frecciatine (frasi già scritte) e reazioni, con data e ora.</li>
 <li><b>Segnalazioni e blocchi</b>: chi hai segnalato, perché e quando (anche il nome o il motto di un clan); chi hai bloccato.</li>
 <li><b>Piccoli contatori</b> contro gli abusi: codici sbagliati, sfide e frecciatine mandate, quante volte un soprannome, un nome di clan o un motto segnalati sono stati tolti.</li>
+<li><b>Il gettone per le notifiche</b> (dalla build 48), solo se sei in un clan e hai detto sì alle notifiche: un codice che Firebase Cloud Messaging dà al telefono, al massimo cinque per profilo (uno per telefono). Serve a mandarti sfide, frecciatine, premi del lunedì, chi entra nel clan e le reazioni alle tue cose. Teniamo anche l'elenco dei clan che hai silenziato.</li>
 <li><b>Le date</b> in cui è nato il tuo profilo e in cui hai aperto Anta l'ultima volta (più o meno: la aggiorniamo una volta a settimana), e <b>i clan da cui sei uscito</b>, per cancellare tutto quando serve.</li>
 </ul>
 <p>Non mandiamo i nomi della famiglia o della città del personaggio, la posizione, la rubrica o le foto. I clan non hanno una chat.</p>
@@ -49,13 +50,14 @@
 
 <h2>Dove stanno i dati</h2>
 <p>Il server dei clan usa <b>Firebase</b>, un servizio di Google che tratta i dati per nostro conto. Il database e i programmi del server sono in <b>Europa</b>. Il servizio che crea l'utente anonimo (Firebase Authentication) lavora invece negli <b>Stati Uniti</b>: Google dichiara di aderire al Data Privacy Framework tra Unione europea e Stati Uniti. App Check può usare centri di Google anche fuori dall'Europa.</p>
+<p>Le notifiche dei clan le consegna <b>Firebase Cloud Messaging</b> di Google, e su iPhone il servizio di notifiche di Apple: ricevono il gettone del telefono e il testo della notifica (per esempio «Paolo ti sfida»).</p>
 <p>Le librerie di Google mandano con le richieste dati tecnici, come versione dell'app e del sistema. La raccolta facoltativa di dati di Firebase è spenta.</p>
 <p>Per far funzionare e proteggere i suoi servizi, Google può tenere l'indirizzo IP nei propri registri: secondo <a href="https://firebase.google.com/support/privacy">la sua informativa</a>, qualche settimana per l'accesso anonimo e qualche mese per le pagine web degli inviti; i registri del server restano di norma trenta giorni. I dati viaggiano sempre cifrati (HTTPS).</p>
 
 <h2>Per quanto tempo</h2>
 <ul>
 <li><b>Un clan</b>, con numeri, bacheca e sfide: si cancella da solo dopo 90 giorni senza attività, oppure subito quando esce l'ultimo membro.</li>
-<li><b>Soprannome, ritratto, ultima giornata e identificativo anonimo</b>: finché non li cancelli, o dopo un anno senza aprire Anta. Allora si esce anche dai clan, come con il tasto.</li>
+<li><b>Soprannome, ritratto, ultima giornata, identificativo anonimo e gettoni per le notifiche</b>: finché non li cancelli, o dopo un anno senza aprire Anta. Allora si esce anche dai clan, come con il tasto.</li>
 <li><b>Segnalazioni</b>: un anno. Quelle su di te si cancellano con i tuoi dati; quelle che hai fatto tu restano anonime (solo il motivo e il giorno). Le segnalazioni del nome o del motto di un clan restano nel clan, senza che gli altri membri vedano chi le ha fatte, e vanno via con i tuoi dati.</li>
 </ul>
 
@@ -93,7 +95,7 @@
 
 <h2>If you use neither clans nor invites</h2>
 <p>Nothing reaches our server. Your game, the endings you have unlocked and the settings stay in the app's storage. The system may include them in your phone's backup (iCloud or Google), which you manage in the settings and which we do not see.</p>
-<p>The morning notification is scheduled by the phone. The texts you share (your ending, a clan invite) are handed by the phone to the app you choose, from its share sheet, or copied to the clipboard. The app talks to the store for purchases and, on Android, at first launch it asks the Play Store whether the installation comes from an invite: from that answer it keeps only the code.</p>
+<p>The morning notification is scheduled by the phone; without clans no notification token is created. The texts you share (your ending, a clan invite) are handed by the phone to the app you choose, from its share sheet, or copied to the clipboard. The app talks to the store for purchases and, on Android, at first launch it asks the Play Store whether the installation comes from an invite: from that answer it keeps only the code.</p>
 
 <h2>If you use clans</h2>
 <p>Clans are optional. When you choose a nickname and confirm, an anonymous user is created: a random identifier, with no email, phone number or password. From that moment we keep:</p>
@@ -104,6 +106,7 @@
 <li><b>The life of the clan</b>: name, emblem, setting and motto (a phrase written by whoever founds it), who joins and who leaves, prizes, challenges, jabs (ready-made phrases) and reactions, with date and time.</li>
 <li><b>Reports and blocks</b>: who you reported, why and when (including a clan's name or motto); who you blocked.</li>
 <li><b>Small counters</b> against abuse: wrong codes, challenges and jabs sent, how many times a reported nickname, clan name or motto was removed.</li>
+<li><b>The notification token</b> (from build 48), only if you are in a clan and said yes to notifications: a code that Firebase Cloud Messaging gives the phone, at most five per profile (one per phone). It is used to send you challenges, jabs, Monday awards, who joins the clan and reactions to your posts. We also keep the list of clans you muted.</li>
 <li><b>The dates</b> when your profile was created and when you last opened Fortyish (roughly: we update it once a week), and <b>the clans you have left</b>, so that everything can be deleted when needed.</li>
 </ul>
 <p>We do not send the names of the character's family or city, your location, your contacts or your photos. Clans have no chat.</p>
@@ -120,13 +123,14 @@
 
 <h2>Where the data is</h2>
 <p>The clan server uses <b>Firebase</b>, a Google service that processes the data on our behalf. The database and the server's programs are in <b>Europe</b>. The service that creates the anonymous user (Firebase Authentication) runs instead in the <b>United States</b>: Google states that it adheres to the Data Privacy Framework between the European Union and the United States. App Check may use Google data centers outside Europe too.</p>
+<p>Clan notifications are delivered by Google's <b>Firebase Cloud Messaging</b>, and on iPhone by Apple's notification service: they receive the phone's token and the text of the notification (for example "Paolo challenges you").</p>
 <p>Google's libraries send technical data with the requests, such as the app and system versions. Firebase's optional data collection is turned off.</p>
 <p>To run and protect its services, Google may keep the IP address in its own logs: according to <a href="https://firebase.google.com/support/privacy">its policy</a>, a few weeks for anonymous sign-in and a few months for the invite web pages; server logs normally stay for thirty days. Data always travels encrypted (HTTPS).</p>
 
 <h2>For how long</h2>
 <ul>
 <li><b>A clan</b>, with its numbers, board and challenges: deleted automatically after 90 days without activity, or right away when the last member leaves.</li>
-<li><b>Nickname, portrait, last day and anonymous identifier</b>: until you delete them, or after a year without opening Fortyish. At that point you also leave your clans, as with the button.</li>
+<li><b>Nickname, portrait, last day, anonymous identifier and notification tokens</b>: until you delete them, or after a year without opening Fortyish. At that point you also leave your clans, as with the button.</li>
 <li><b>Reports</b>: one year. Those about you are deleted with your data; those you made stay, anonymous (only the reason and the day). Reports of a clan's name or motto stay in the clan, without the other members seeing who made them, and go away with your data.</li>
 </ul>
 
